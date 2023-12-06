@@ -37,6 +37,74 @@ attr_accessor :array, :root
     end
   end
 
+  def delete(data)
+    delete_recursive(data, @root)
+  end
+
+  def delete_recursive(data, node)
+    if node.nil?
+      puts "data #{data} is not found"
+      return
+    end
+    if node.data == data
+      if node.left.nil? && node.right.nil?
+        delete_leaf(node, @root)
+      elsif node.left.nil? && !node.right.nil?
+          delete_one_child(node, node.right, @root)
+      elsif !node.left.nil? && node.right.nil?
+        delete_one_child(node, node.left, @root)
+      else
+        delete_two_child(node, node.left, node.right)
+      end
+    elsif data > node.data
+      delete_recursive(data, node.right)
+    else
+      delete_recursive(data, node.left)
+    end
+
+  end
+
+  def delete_leaf(data, node)
+    if node.left == data
+      node.left = nil
+    elsif node.right == data
+      node.right = nil
+    elsif data > node
+      delete_leaf(data, node.right)
+    else
+      delete_leaf(data, node.left)
+    end
+  end
+
+  def delete_one_child(data, child_node, node)
+    if node.left == data
+      node.left = child_node
+    elsif node.right == data
+      node.right = child_node
+    elsif data > node
+      delete_one_child(data, child_node, node.right)
+    else
+      delete_one_child(data, child_node, node.left)
+    end
+  end
+
+  def delete_two_child(data, left, right)
+    right_lowest = delete_find_lowest(right)
+    delete_one_child(data, right_lowest, @root)
+    right_lowest.left = left
+    right_lowest.right = right
+  end
+
+  def delete_find_lowest(node)
+    if node.left.nil?
+      if !node.right.nil?
+        delete_one_child(node, node.right, @root)
+      end
+      return node
+    end
+    delete_find_lowest(node.left)
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
