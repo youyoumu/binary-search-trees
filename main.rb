@@ -11,9 +11,13 @@ p array
 
 bst = Tree.new(array)
 bst.pretty_print
+
+# #insert test
 # puts "inserting 98"
 # bst.insert(98)
 # bst.pretty_print
+
+# #delete test
 # puts "deleting 98"
 # bst.delete(98)
 # bst.pretty_print
@@ -26,4 +30,12 @@ bst.pretty_print
 # bst.delete(62)
 # bst.pretty_print
 
-puts bst.find(99)
+# #find test
+# puts bst.find(99)
+
+# #level_order test
+bst.level_order do |a|
+  puts a*2
+end
+test = bst.level_order
+p test

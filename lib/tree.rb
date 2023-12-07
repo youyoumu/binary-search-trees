@@ -123,6 +123,27 @@ attr_accessor :array, :root
     end
   end
 
+  def level_order(&block)
+    queue = [@root]
+    array = []
+    array = level_order_recursive(queue, @root, array, &block)
+    return array unless block_given?
+    return
+  end
+
+  def level_order_recursive(queue, node, array, &block)
+    queue = queue.compact
+    if queue.empty?
+      return array
+    end
+    yield(node.data) if block_given?
+    array.push(node.data)
+    queue.shift
+    queue.push(node.left)
+    queue.push(node.right)
+    level_order_recursive(queue, queue[0], array, &block)
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
