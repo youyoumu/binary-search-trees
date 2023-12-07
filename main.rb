@@ -11,17 +11,19 @@ p array
 
 bst = Tree.new(array)
 bst.pretty_print
-puts "inserting 98"
-bst.insert(98)
-bst.pretty_print
-puts "deleting 98"
-bst.delete(98)
-bst.pretty_print
-puts "deleting 98"
-bst.delete(98)
-puts "deleting 40"
-bst.delete(40)
-bst.pretty_print
-puts "deleting 62"
-bst.delete(62)
-bst.pretty_print
+# puts "inserting 98"
+# bst.insert(98)
+# bst.pretty_print
+# puts "deleting 98"
+# bst.delete(98)
+# bst.pretty_print
+# puts "deleting 98"
+# bst.delete(98)
+# puts "deleting 40"
+# bst.delete(40)
+# bst.pretty_print
+# puts "deleting 62"
+# bst.delete(62)
+# bst.pretty_print
+
+puts bst.find(99)

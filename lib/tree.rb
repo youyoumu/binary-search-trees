@@ -105,6 +105,24 @@ attr_accessor :array, :root
     delete_find_lowest(node.left)
   end
 
+  def find(data)
+    find_recursive(data, @root)
+  end
+
+  def find_recursive(data, node)
+    if node.nil?
+      puts "data #{data} is not found"
+      return
+    end
+    if node.data == data
+      return node
+    elsif data > node.data
+      find_recursive(data, node.right)
+    else
+      find_recursive(data, node.left)
+    end
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
