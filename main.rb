@@ -80,17 +80,30 @@ bst.pretty_print
 # puts bst.depth(test2)
 
 # #balanced? test
-puts bst.balanced?
-bst.insert(95)
-bst.insert(1)
-bst.insert(4)
-bst.insert(6)
-bst.pretty_print
-puts bst.balanced?
+# puts bst.balanced?
+# bst.insert(95)
+# bst.insert(1)
+# bst.insert(4)
+# bst.insert(6)
+# bst.pretty_print
+# puts bst.balanced?
+# bst.insert(100)
+# bst.pretty_print
+# puts bst.balanced?
+# bst.insert(98)
+# bst.insert(101)
+# bst.pretty_print
+# puts bst.balanced?
+
+# #rebalance test
+bst.rebalance
 bst.insert(100)
-bst.pretty_print
-puts bst.balanced?
-bst.insert(98)
 bst.insert(101)
+bst.insert(102)
+bst.insert(103)
+bst.insert(104)
+bst.insert(106)
+bst.insert(107)
 bst.pretty_print
-puts bst.balanced?
+bst.rebalance
+bst.pretty_print

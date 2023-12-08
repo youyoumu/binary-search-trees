@@ -141,6 +141,7 @@ attr_accessor :array, :root
     queue.shift
     queue.push(node.left)
     queue.push(node.right)
+    queue = queue.compact
     level_order_recursive(queue, queue[0], array, &block)
   end
 
@@ -246,6 +247,17 @@ attr_accessor :array, :root
     b = balanced?(root.left)
     return true if a == true && b == true
     return false
+  end
+
+  def rebalance
+    if balanced?
+      puts "tree is already in balance. skipping rebalance"
+      return
+    end
+    puts "rebalancing"
+    array = level_order
+    array = array.sort
+    @root = build_tree(array, 0, array.length-1)
   end
 
   # Copied
