@@ -144,6 +144,24 @@ attr_accessor :array, :root
     level_order_recursive(queue, queue[0], array, &block)
   end
 
+  def preorder(&block)
+    array = []
+    array = preorder_recursive(@root, array, &block)
+    return array unless block_given?
+    return
+  end
+
+  def preorder_recursive(node, array, &block)
+    return array if node.nil?
+    if block_given?
+      yield node.data
+    else
+      array.push(node.data)
+    end
+    array = preorder_recursive(node.left, array, &block)
+    preorder_recursive(node.right, array, &block)
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right

@@ -34,8 +34,15 @@ bst.pretty_print
 # puts bst.find(99)
 
 # #level_order test
-bst.level_order do |a|
-  puts a*2
+# bst.level_order do |a|
+#   puts a*2
+# end
+# test = bst.level_order
+# p test
+
+# #preorder test
+bst.preorder do |a|
+    puts a*2
 end
-test = bst.level_order
+test = bst.preorder
 p test
