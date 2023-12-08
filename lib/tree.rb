@@ -198,6 +198,25 @@ attr_accessor :array, :root
     end
   end
 
+  def height(node)
+    counter = 0
+    return height_recursive(node, counter)
+  end
+
+  def height_recursive(node, counter)
+    if node.nil?
+      return counter
+    end
+    counter += 1
+    a = height_recursive(node.left, counter)
+    b = height_recursive(node.right, counter)
+    if a > b
+      return a
+    else
+      return b
+    end
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right

@@ -55,8 +55,20 @@ bst.pretty_print
 # p test
 
 # #postorder test
-bst.postorder do |a|
-  puts a*2
-end
-test = bst.postorder
-p test
+# bst.postorder do |a|
+#   puts a*2
+# end
+# test = bst.postorder
+# p test
+
+# #height test
+test = bst.find(62)
+test2 = bst.find(14)
+puts bst.height(test)
+puts bst.height(test2)
+bst.insert(100)
+bst.insert(105)
+bst.insert(107)
+bst.pretty_print
+puts bst.height(test)
+puts bst.height(test2)
