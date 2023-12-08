@@ -74,7 +74,23 @@ bst.pretty_print
 # puts bst.height(test2)
 
 # #depth test
-test = bst.find(42)
-test2 = bst.find(62)
-puts bst.depth(test)
-puts bst.depth(test2)
+# test = bst.find(42)
+# test2 = bst.find(62)
+# puts bst.depth(test)
+# puts bst.depth(test2)
+
+# #balanced? test
+puts bst.balanced?
+bst.insert(95)
+bst.insert(1)
+bst.insert(4)
+bst.insert(6)
+bst.pretty_print
+puts bst.balanced?
+bst.insert(100)
+bst.pretty_print
+puts bst.balanced?
+bst.insert(98)
+bst.insert(101)
+bst.pretty_print
+puts bst.balanced?

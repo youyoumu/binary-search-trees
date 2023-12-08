@@ -236,6 +236,18 @@ attr_accessor :array, :root
     end
   end
 
+  def balanced?(root = @root)
+    return true if root.nil?
+    a, b = 0, 0
+    a = height(root.right) unless root.right.nil?
+    b = height(root.left) unless root.left.nil?
+    return false if a - b > 1 || b - a > 1
+    a = balanced?(root.right)
+    b = balanced?(root.left)
+    return true if a == true && b == true
+    return false
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
