@@ -180,6 +180,24 @@ attr_accessor :array, :root
     inorder_recursive(node.right, array, &block)
   end
 
+  def postorder(&block)
+    array = []
+    array = postorder_recursive(@root, array, &block)
+    return array unless block_given?
+    return
+  end
+
+  def postorder_recursive(node, array, &block)
+    return array if node.nil?
+    array = postorder_recursive(node.left, array, &block)
+    array = postorder_recursive(node.right, array, &block)
+    if block_given?
+      yield node.data
+    else
+      array.push(node.data)
+    end
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right

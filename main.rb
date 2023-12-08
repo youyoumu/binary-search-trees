@@ -47,8 +47,16 @@ bst.pretty_print
 # test = bst.preorder
 # p test
 
-bst.inorder do |a|
+# #inorder test
+# bst.inorder do |a|
+#   puts a*2
+# end
+# test = bst.inorder
+# p test
+
+# #postorder test
+bst.postorder do |a|
   puts a*2
 end
-test = bst.inorder
+test = bst.postorder
 p test
