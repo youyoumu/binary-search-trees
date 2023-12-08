@@ -217,6 +217,25 @@ attr_accessor :array, :root
     end
   end
 
+  def depth(node)
+    counter = 0
+    return depth_recursive(node, @root, counter)
+  end
+
+  def depth_recursive(node, root, counter)
+    if node.nil?
+      puts "node doesn't exist"
+      return
+    end
+    if node == root
+      return counter
+    elsif node > root
+      depth_recursive(node, root.right, counter+1)
+    else
+      depth_recursive(node, root.left, counter+1)
+    end
+  end
+
   # Copied
   def pretty_print(node = @root, prefix = '', is_left = true)
     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
